@@ -15,6 +15,8 @@ dependencies:
 
   # State
   provider: ^3.0.0+1
+  # Navigator
+  get_it: ^1.0.3+2
 
   # Base Component
   # WebView iOS添加键值对 o.flutter.embedded_views_preview = YES

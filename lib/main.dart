@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fun_android/navigator/navigate_service.dart';
+import 'package:fun_android/navigator/service_locator.dart';
 
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +20,7 @@ import 'view_model/theme_model.dart';
 
 main() async {
   Provider.debugCheckInvalidValueType = null;
-
+  setupLocator();
   /// 全局屏幕适配方案
   InnerWidgetsFlutterBinding.ensureInitialized()
     ..attachRootWidget(App(future: StorageManager.init()))
@@ -49,6 +51,7 @@ class App extends StatelessWidget {
                     return RefreshConfiguration(
                       hideFooterWhenNotFull: true, //列表数据不满一页,不触发加载更多
                       child: MaterialApp(
+                        navigatorKey: getIt<NavigateService>().key,
                         debugShowCheckedModeBanner: false,
                         theme: themeModel.themeData,
                         darkTheme: themeModel.darkTheme,
